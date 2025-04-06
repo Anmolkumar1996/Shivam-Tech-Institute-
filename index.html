@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shivam Tech Institute</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
         <img src="logo.png" alt="Shivam Tech Institute Logo" width="100">
         <h1>Shivam Tech Institute</h1>
         <p>Learn to grow</p>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
     </header>
     
     <nav>
@@ -25,16 +27,19 @@
     <section id="home">
         <h2>Welcome to Shivam Tech Institute</h2>
         <p>Providing quality computer education for a better future.</p>
+        <div class="slideshow">
+            <img class="slide" src="course1.jpg" alt="Course 1">
+            <img class="slide" src="course2.jpg" alt="Course 2">
+            <img class="slide" src="course3.jpg" alt="Course 3">
+        </div>
     </section>
     
     <section id="courses">
         <h2>Our Courses</h2>
-        <ul>
-            <li>Web Development</li>
-            <li>Python Programming</li>
-            <li>Data Science Basics</li>
-            <li>Computer Fundamentals</li>
-        </ul>
+        <div class="course-card">Web Development</div>
+        <div class="course-card">Python Programming</div>
+        <div class="course-card">Data Science Basics</div>
+        <div class="course-card">Computer Fundamentals</div>
     </section>
     
     <section id="login">
@@ -48,16 +53,44 @@
     
     <section id="contact">
         <h2>Contact Us</h2>
-        <form>
+        <form id="contact-form">
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
             <textarea placeholder="Your Message" required></textarea>
             <button type="submit">Send</button>
         </form>
+        <div id="chat-box">
+            <p>Live Chat: Ask us anything!</p>
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="chat-send">Send</button>
+        </div>
     </section>
     
     <footer>
         <p>&copy; 2025 Shivam Tech Institute. All Rights Reserved.</p>
     </footer>
+    
+    <script>
+        // Dark mode toggle
+        document.getElementById('dark-mode-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+        
+        // Slideshow
+        let slides = document.querySelectorAll('.slide');
+        let index = 0;
+        function showSlides() {
+            slides.forEach(slide => slide.style.display = 'none');
+            slides[index].style.display = 'block';
+            index = (index + 1) % slides.length;
+        }
+        setInterval(showSlides, 3000);
+        showSlides();
+
+        // Live Chat Functionality
+        document.getElementById('chat-send').addEventListener('click', function() {
+            alert('Live chat feature coming soon!');
+        });
+    </script>
 </body>
 </html>
